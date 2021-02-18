@@ -1,6 +1,6 @@
 <?php
 
-include '../common/required.php';
+//include '../common/required.php';
 
 class Database
 {
@@ -17,15 +17,15 @@ class Database
         return $this->$property;
     }
 
-    function insertTable($name, $row){
-        $this->$name[] = $row;
+    function insertTable($tableName, $row){
+        return  $this->$tableName[] = $row;
     }
 
-    function selectTable($name, $where){
+    function selectTable($tableName, $elementName){
         $table = array();
 
-        foreach ($this->$name as $item){
-            if($item->name == $where){
+        foreach ($this->$tableName as $item){
+            if($item->name == $elementName){
                 $table[] = $item;
             }
         }
@@ -33,22 +33,44 @@ class Database
         return $table;
     }
 
-    function updateTable($name, $row){
+    function findById($tableName, $id){
 
-        foreach ($this->$name as $key => $item){
+        foreach ($this->$tableName as $item){
+            if($item->id == $id){
+                return $item;
+            }
+        }
+
+        return false;
+    }
+
+    function findByName($tableName, $name){
+
+        foreach ($this->$tableName as $item){
+            if($item->name == $name){
+                return $item;
+            }
+        }
+
+        return false;
+    }
+
+    function updateTable($tableName, $row){
+
+        foreach ($this->$tableName as $key => $item){
             if($item->id == $row->id){
-                return($this->$name[$key] = $row);
+                return($this->$tableName[$key] = $row);
             }
         }
 
         return 0;
     }
 
-    function deleteTable($name, $row){
+    function deleteTable($tableName, $id){
 
-        foreach ($this->$name as $key => $item){
-            if($item->id == $row){
-                unset($this->$name[$key]);
+        foreach ($this->$tableName as $key => $item){
+            if($item->id == $id){
+                unset($this->$tableName[$key]);
                 return 1;
             }
         }
@@ -56,9 +78,9 @@ class Database
         return 0;
     }
 
-    function truncateTable($name){
+    function truncateTable($tableName){
 
-        unset($this->$name);
+        unset($this->$tableName);
 
     }
 

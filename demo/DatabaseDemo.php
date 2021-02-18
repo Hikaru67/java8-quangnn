@@ -30,7 +30,7 @@ class DatabaseDemo
 
     public function updateTableTest($name, $row)
     {
-        $this->databaseTest->updateTable($name, $row);
+        return $this->databaseTest->updateTable($name, $row);
     }
 
     public function deleteTableTest($name, $row)
