@@ -1,7 +1,8 @@
 <?php
 
+include 'BaseRow.php';
 
-class Accessory
+class Accessory extends BaseRow
 {
     protected $id;
     protected $name;
@@ -11,12 +12,4 @@ class Accessory
         $this->name = $name;
     }
 
-    public function __set($property, $value){
-        $this->$property = $value;
-    }
-
-    public function __get($property)
-    {
-        return $this->$property;
-    }
 }

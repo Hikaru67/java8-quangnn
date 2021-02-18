@@ -1,6 +1,8 @@
 <?php
 
-class Category
+include 'BaseRow.php';
+
+class Category extends BaseRow
 {
     protected $id;
     protected $name;
@@ -10,12 +12,4 @@ class Category
         $this->name = $name;
     }
 
-    public function __set($property, $value){
-        $this->$property = $value;
-    }
-
-    public function __get($property)
-    {
-        return $this->$property;
-    }
 }
