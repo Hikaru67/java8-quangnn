@@ -1,6 +1,6 @@
 <?php
 
-//include '../common/required.php';
+include '../common/autoload.php';
 
 class Database
 {
@@ -18,7 +18,10 @@ class Database
     }
 
     function insertTable($tableName, $row){
-        return  $this->$tableName[] = $row;
+        if(in_array(get_class($row), ENTITY_TYPE))
+            return $this->$tableName[] = $row;
+        else
+            return false;
     }
 
     function selectTable($tableName, $elementName){

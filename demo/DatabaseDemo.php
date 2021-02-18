@@ -1,7 +1,7 @@
 <?php
 
-require_once '../dao/Database.php';
-include '../common/autoload.php';
+include '../dao/Database.php';
+include '../common/required.php';
 
 class DatabaseDemo
 {
@@ -89,17 +89,5 @@ class DatabaseDemo
 $databaseDemo = new DatabaseDemo(new Database());
 //$databaseDemo->insertTableTest();
 $databaseDemo->initDatabase();
-$databaseDemo->updateTableTest(CATEGORY_TABLE, new Category(1, 'category haha'));
+$databaseDemo->updateTableTest(CATEGORY_TABLE, new Category(1, 'category update'));
 $databaseDemo->printTableTest();
-
-
-/*"""Viết class DatabaseDemo, sử dụng các phương thức của class Database.
-Đặt trong gói com.dd.[hoten].demo.
-Class DatabaseDemo phải có các phương thức sau:
-- insertTableTest()
-- selectTableTest()
-- updateTableTest()
-- deleteTableTest()
-- truncateTableTest()
-- initDatabase() : Tạo mỗi bảng 10 bản ghi.
-- printTableTest(...)"""*/
