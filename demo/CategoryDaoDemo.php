@@ -1,44 +1,14 @@
 <?php
 
 include '../common/categoryLoad.php';
+include 'BaseDemo.php';
 
-
-class CategoryDaoDemo
+class CategoryDaoDemo extends BaseDemo
 {
-    protected $categoryDAO;
 
-    public function __construct(CategoryDAO $categoryDAO)
+    public function __construct(CategoryDAO $propertyDao)
     {
-        $this->categoryDAO = $categoryDAO;
-    }
-
-    public function insertTest(Category $row){
-        if($this->categoryDAO->insert($row))
-            echo "Insert success\n";
-        else
-            echo "Insert failed\n";
-    }
-
-    public function updateTest(Category $row){
-        if($this->categoryDAO->update($row))
-            echo "Update success\n";
-        else
-            echo "Update failed\n";
-    }
-
-    public function deleteTest($id){
-        if($this->categoryDAO->delete($id))
-            echo "Delete success\n";
-        else
-            echo "Delete failed\n";
-    }
-
-    public function findAllTest(){
-        return $this->categoryDAO->findAll();
-    }
-
-    public function findByIdTest($id){
-        return $this->categoryDAO->findById($id);
+        parent::__construct($propertyDao);
     }
 
 }
@@ -46,7 +16,11 @@ class CategoryDaoDemo
 $database = new Database();
 $categoryDaoDemo = new CategoryDaoDemo(new CategoryDAO($database));
 $categoryDaoDemo->insertTest(new Category(1, 'test'));
-$categoryDaoDemo->updateTest(new Category(1, 'test2'));
-//$categoryDaoDemo->deleteTest(1);
-//var_dump($categoryDaoDemo->findAllTest());
-var_dump($categoryDaoDemo->findByIdTest(1));
+$categoryDaoDemo->insertTest(new Category(2, 'test 2'));
+$categoryDaoDemo->insertTest(new Category(3, 'test 3'));
+$categoryDaoDemo->updateTest(new Category(1, 'test update'));
+$categoryDaoDemo->deleteTest(2);
+var_dump($categoryDaoDemo->findAllTest());
+var_dump($categoryDaoDemo->findByIdTest(3));
+var_dump($categoryDaoDemo->findByNameTest('test 2'));
+var_dump($categoryDaoDemo->searchTest('test'));

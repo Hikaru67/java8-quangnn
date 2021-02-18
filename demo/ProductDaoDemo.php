@@ -1,52 +1,16 @@
 <?php
 
 include '../common/productLoad.php';
+include 'BaseDemo.php';
 
-class ProductDaoDemo
+class ProductDaoDemo extends BaseDemo
 {
-    protected $productDao;
 
-    public function __construct(ProductDAO $productDAO)
+    public function __construct(ProductDAO $propertyDao)
     {
-        $this->productDao = $productDAO;
+        parent::__construct($propertyDao);
     }
 
-    public function insertTest(Product $row){
-        if($this->productDao->insert($row))
-            echo "Insert success\n";
-        else
-            echo "Insert failed\n";
-    }
-
-    public function updateTest(Product $row){
-        if($this->productDao->update($row))
-            echo "Update success\n";
-        else
-            echo "Update failed\n";
-    }
-
-    public function deleteTest($id){
-        if($this->productDao->delete($id))
-            echo "Delete success\n";
-        else
-            echo "Delete failed\n";
-    }
-
-    public function findAllTest(){
-        return $this->productDao->findAll();
-    }
-
-    public function findByIdTest($id){
-        return $this->productDao->findById($id);
-    }
-
-    public function findByNameTest($name){
-        return $this->productDao->findByName($name);
-    }
-
-    public function searchTest($name){
-        return $this->productDao->search($name);
-    }
 }
 
 $database = new Database();

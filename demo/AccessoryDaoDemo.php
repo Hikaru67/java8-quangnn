@@ -1,53 +1,16 @@
 <?php
 
 include '../common/accessoryLoad.php';
+include 'BaseDemo.php';
 
-
-class AccessoryDaoDemo
+class AccessoryDaoDemo extends BaseDemo
 {
-    protected $accessoryDao;
 
-    public function __construct(AccessoryDAO $accessoryDAO)
+    public function __construct(AccessoryDAO $propertyDao)
     {
-        $this->accessoryDao = $accessoryDAO;
+        parent::__construct($propertyDao);
     }
 
-    public function insertTest(Accessory $row){
-        if($this->accessoryDao->insert($row))
-            echo "Insert success\n";
-        else
-            echo "Insert failed\n";
-    }
-
-    public function updateTest(Accessory $row){
-        if($this->accessoryDao->update($row))
-            echo "Update success\n";
-        else
-            echo "Update failed\n";
-    }
-
-    public function deleteTest($id){
-        if($this->accessoryDao->delete($id))
-            echo "Delete success\n";
-        else
-            echo "Delete failed\n";
-    }
-
-    public function findAllTest(){
-        return $this->accessoryDao->findAll();
-    }
-
-    public function findByIdTest($id){
-        return $this->accessoryDao->findById($id);
-    }
-
-    public function findByNameTest($name){
-        return $this->accessoryDao->findByName($name);
-    }
-
-    public function searchTest($name){
-        return $this->accessoryDao->search($name);
-    }
 }
 
 $database = new Database();

@@ -1,52 +1,14 @@
 <?php
 
-//include '../common/autoload.php';
+include_once 'BaseDAO.php';
 
-class AccessoryDAO
+class AccessoryDAO extends BaseDAO
 {
-    protected $database;
 
     public function __construct(Database &$database)
     {
-        $this->database = $database;
+        parent::__construct($database);
+        $this->tableName = ACCESSORY_TABLE;
     }
 
-    public function __get($name)
-    {
-        return $this->$name;
-    }
-
-    public function insert(Accessory $row){
-
-        if($this->database->insertTable(ACCESSORY_TABLE, $row))
-            return true;
-        else
-            return false;
-
-    }
-
-    public function update(Accessory $row){
-        return  $this->database->updateTable(ACCESSORY_TABLE, $row);
-    }
-
-    public function delete($id){
-        return $this->database->deleteTable(ACCESSORY_TABLE, $id);
-    }
-
-    public function findAll(){
-        $tableName = ACCESSORY_TABLE;
-        return $this->database->$tableName;
-    }
-
-    public function findById($id){
-        return $this->database->findById(ACCESSORY_TABLE, $id);
-    }
-
-    public function findByName($name){
-        return $this->database->findByName(ACCESSORY_TABLE, $name);
-    }
-
-    public function search($name){
-        return $this->database->selectTable(ACCESSORY_TABLE, $name);
-    }
 }
