@@ -7,34 +7,21 @@ abstract class BaseDAO implements InterfaceDAO
     protected $database;
     protected $tableName;
 
-    public function __construct(Database &$database)
+    protected function __construct(Database &$database)
     {
         $this->database = $database;
     }
 
-    public function __get($name)
+    public function insert(BaseRow $row){
+        return $this->database->insertTable($this->tableName, $row);
+    }
+
+    public function update(BaseRow $row){
+        return  $this->database->updateTable($this->tableName, $row);
+    }
+
+    public function delete($id): bool
     {
-        return $this->$name;
-    }
-
-    public function insert($row){
-
-        if(!in_array(get_class($row), ENTITY_TYPE)){
-            return false;
-        }
-            return $this->database->insertTable($this->tableName, $row);
-
-    }
-
-    public function update($row){
-        if(!in_array(get_class($row), ENTITY_TYPE)){
-            return false;
-        }
-            return  $this->database->updateTable($this->tableName, $row);
-
-    }
-
-    public function delete($id){
         return $this->database->deleteTable($this->tableName, $id);
     }
 

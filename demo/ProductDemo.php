@@ -11,7 +11,7 @@ class ProductDemo
     }
 
     public function printProduct(){
-        echo "ID: ".$this->productDemo->id."\nPRODUCT NAME: ".$this->productDemo->name."\nCATEGORY ID: ".$this->productDemo->categoryId."\n";
+        echo "ID: ".$this->productDemo->getId()."\nPRODUCT NAME: ".$this->productDemo->getName()."\nCATEGORY ID: ".$this->productDemo->getCategoryId()."\n";
     }
 
 }

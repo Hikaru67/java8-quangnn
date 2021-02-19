@@ -46,7 +46,7 @@ class Database
         $table = array();
 
         foreach ($this->$tableName as $item){
-            if($item->name == $elementName){
+            if($item->getName() == $elementName){
                 $table[] = $item;
             }
         }
@@ -60,7 +60,7 @@ class Database
         }
 
         foreach ($this->$tableName as $item){
-            if($item->id == $id){
+            if($item->getId() == $id){
                 return $item;
             }
         }
@@ -74,7 +74,7 @@ class Database
         }
 
         foreach ($this->$tableName as $item){
-            if($item->name == $name){
+            if($item->getName() == $name){
                 return ($item);
             }
         }
@@ -88,7 +88,7 @@ class Database
         }
 
         foreach ($this->$tableName as $key => $item){
-            if($item->id == $row->id){
+            if($item->getId() == $row->getId()){
                 return($this->$tableName[$key] = $row);
             }
         }
@@ -103,7 +103,7 @@ class Database
         }
 
         foreach ($this->$tableName as $key => $item){
-            if($item->id == $id){
+            if($item->getId() == $id){
                 unset($this->$tableName[$key]);
                 return true;
             }

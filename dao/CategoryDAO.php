@@ -11,4 +11,13 @@ class CategoryDAO extends BaseDAO
         $this->tableName = CATEGORY_TABLE;
     }
 
+    public function getDatabase(): Database
+    {
+        return $this->database;
+    }
+
+    public function getTableName(): string
+    {
+        return $this->tableName;
+    }
 }

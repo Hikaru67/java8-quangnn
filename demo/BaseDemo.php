@@ -11,29 +11,17 @@ abstract class BaseDemo
     }
 
     public function insertTest(BaseRow $row){
-        if(!in_array(get_class($row), ENTITY_TYPE)){
+        if($this->propertyDao->insert($row))
+            echo "Insert success\n";
+        else
             echo "Insert failed\n";
-        }
-        else{
-            if($this->propertyDao->insert($row))
-                echo "Insert success\n";
-            else
-                echo "Insert failed\n";
-        }
-
     }
 
     public function updateTest(BaseRow $row){
-        if(!in_array(get_class($row), ENTITY_TYPE)){
+        if($this->propertyDao->update($row))
+            echo "Update success\n";
+        else
             echo "Update failed\n";
-        }
-        else{
-            if($this->propertyDao->update($row))
-                echo "Update success\n";
-            else
-                echo "Update failed\n";
-        }
-
     }
 
     public function deleteTest($id){

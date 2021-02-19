@@ -11,4 +11,13 @@ class ProductDAO extends BaseDAO
         $this->tableName = PRODUCT_TABLE;
     }
 
+    public function getDatabase(): Database
+    {
+        return $this->database;
+    }
+
+    public function getTableName(): string
+    {
+        return $this->tableName;
+    }
 }

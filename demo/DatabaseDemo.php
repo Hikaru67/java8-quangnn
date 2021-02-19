@@ -13,9 +13,9 @@ class DatabaseDemo
         $this->databaseTest = $database;
     }
 
-    public function __get($property)
+    public function getDatabase(): Database
     {
-        return $this->$property;
+        return $this->databaseTest;
     }
 
     public function insertTableTest($name, $row)
@@ -69,10 +69,10 @@ class DatabaseDemo
 
         if ($this->databaseTest->$productTable){
             echo "\nTABLE PRODUCT \n";
-            echo "|Id\t|PRODUCT NAME\t|Category Name\t|\n";
+            echo "|Id\t|PRODUCT NAME\t|Category Id\t|\n";
 
                 foreach ($this->databaseTest->$productTable as $product){
-                echo "|$product->id\t|$product->name\t|$product->categoryId\t\t|\n";
+                echo "|".$product->getId()."\t|".$product->getName()."\t|".$product->getCategoryId()."\t\t|\n";
             }
         }
 
@@ -81,7 +81,7 @@ class DatabaseDemo
             echo "|Id\t|CATEGORY NAME\t|\n";
 
             foreach ($this->databaseTest->$categoryTable as $category){
-                echo "|$category->id\t|$category->name\t|\n";
+                echo "|".$category->getId()."\t|".$category->getName()."\t|\n";
             }
         }
 
@@ -90,7 +90,7 @@ class DatabaseDemo
             echo "|Id\t|ACCESSORY NAME\t|\n";
 
             foreach ($this->databaseTest->$accessoryTable as $accessory){
-                echo "|$accessory->id\t|$accessory->name|\n";
+                echo "|".$accessory->getId()."\t|".$accessory->getName()."|\n";
             }
         }
 

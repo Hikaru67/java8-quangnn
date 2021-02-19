@@ -3,10 +3,8 @@
 
 interface InterfaceDAO
 {
-    public function __construct(Database &$database);
-    public function __get($name);
-    public function insert($row);
-    public function update($row);
+    public function insert(BaseRow $row);
+    public function update(BaseRow $row);
     public function delete($id);
     public function findAll();
     public function findById($id);
