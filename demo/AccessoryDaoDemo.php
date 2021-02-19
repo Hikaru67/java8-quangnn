@@ -13,7 +13,7 @@ class AccessoryDaoDemo extends BaseDemo
 
 }
 
-$database = new Database();
+$database = Database::createDatabase();
 $accessoryDaoDemo = new AccessoryDaoDemo(new AccessoryDAO($database));
 $accessoryDaoDemo->insertTest(new Accessory(1, 'test'));
 $accessoryDaoDemo->insertTest(new Accessory(2, 'test 2'));

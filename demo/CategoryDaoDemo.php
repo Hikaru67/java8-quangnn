@@ -13,7 +13,7 @@ class CategoryDaoDemo extends BaseDemo
 
 }
 
-$database = new Database();
+$database = Database::createDatabase();
 $categoryDaoDemo = new CategoryDaoDemo(new CategoryDAO($database));
 $categoryDaoDemo->insertTest(new Category(1, 'test'));
 $categoryDaoDemo->insertTest(new Category(2, 'test 2'));

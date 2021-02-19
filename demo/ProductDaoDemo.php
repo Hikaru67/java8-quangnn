@@ -13,7 +13,7 @@ class ProductDaoDemo extends BaseDemo
 
 }
 
-$database = new Database();
+$database = Database::createDatabase();
 $productDaoDemo = new ProductDaoDemo(new ProductDAO($database));
 $productDaoDemo->insertTest(new Product(1, 'test', 11));
 $productDaoDemo->insertTest(new Product(2, 'test 2', 12));
