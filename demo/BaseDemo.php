@@ -1,6 +1,5 @@
 <?php
 
-//include '../common/accessoryLoad.php';
 
 abstract class BaseDemo
 {
@@ -11,7 +10,7 @@ abstract class BaseDemo
         $this->propertyDao = $propertyDao;
     }
 
-    public function insertTest( $row){
+    public function insertTest(BaseRow $row){
         if(!in_array(get_class($row), ENTITY_TYPE)){
             echo "Insert failed\n";
         }
@@ -24,7 +23,7 @@ abstract class BaseDemo
 
     }
 
-    public function updateTest($row){
+    public function updateTest(BaseRow $row){
         if(!in_array(get_class($row), ENTITY_TYPE)){
             echo "Update failed\n";
         }
