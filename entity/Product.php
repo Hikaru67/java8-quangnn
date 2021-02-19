@@ -1,6 +1,6 @@
 <?php
 
-include_once 'BaseRow.php';
+include 'BaseRow.php';
 
 class Product extends BaseRow
 {

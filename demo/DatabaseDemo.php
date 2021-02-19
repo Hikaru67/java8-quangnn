@@ -44,12 +44,20 @@ class DatabaseDemo
     }
 
     public function initDatabase(){
-        $amountRecord = 10;
+        try {
+            $amountRecord = 10;
 
-        for ($i=1; $i<=$amountRecord; $i++){
-            DatabaseDemo::insertTableTest(PRODUCT_TABLE, new Product($i, 'product test '.$i, $i*10));
-            DatabaseDemo::insertTableTest(CATEGORY_TABLE, new Category($i, 'category test'.$i));
-            DatabaseDemo::insertTableTest(ACCESSORY_TABLE, new Accessory($i, 'accessory test'.$i));
+            for ($i=1; $i<=$amountRecord; $i++){
+                DatabaseDemo::insertTableTest(PRODUCT_TABLE, new Product($i, 'product test '.$i, $i*10));
+                DatabaseDemo::insertTableTest(CATEGORY_TABLE, new Category($i, 'category test'.$i));
+//                DatabaseDemo::insertTableTest(CATEGORY_TABLE, 5);
+                DatabaseDemo::insertTableTest(ACCESSORY_TABLE, new Accessory($i, 'accessory test'.$i));
+            }
+
+        }catch (TypeError $e){
+            echo $e->getMessage();
+        }catch (Exception $e){
+            echo $e->getMessage();
         }
 
     }

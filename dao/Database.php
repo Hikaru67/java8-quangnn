@@ -1,6 +1,7 @@
 <?php
 
 include '../common/autoload.php';
+include_once 'PrevDatabase.php';
 
 class Database
 {
@@ -17,16 +18,11 @@ class Database
         return $this->$property;
     }
 
-    function insertTable($tableName, $row){
-        if(!isValidTableName($tableName)||!isValidEntityType($row)){
+    public function insertTable($tableName, BaseRow2 $row){
+        if(!isValidTableName($tableName)){
             return false;
         }
-        /*if(!in_array(get_class($row), ENTITY_TYPE)||!in_array($tableName, TABLE_NAMES)){
-            return false;
-        }*/
-
         return $this->$tableName[] = $row;
-
     }
 
     function selectTable($tableName, $elementName){
