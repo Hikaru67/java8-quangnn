@@ -1,13 +1,26 @@
 <?php
 
 include '../common/autoload.php';
-include_once 'PrevDatabase.php';
 
 class Database
 {
+    private static $database;
+
     protected $productTable;
     protected $categoryTable;
     protected $accessoryTable;
+
+    private function __construct(){}
+
+    public static function createDatabase(): Database
+    {
+        if(self::$database !== null){
+            return self::$database;
+        }
+
+        self::$database = new self();
+        return self::$database;
+    }
 
     public function __set($property, $value){
         $this->$property = $value;
@@ -18,7 +31,7 @@ class Database
         return $this->$property;
     }
 
-    public function insertTable($tableName, BaseRow2 $row){
+    public function insertTable($tableName, BaseRow $row){
         if(!isValidTableName($tableName)){
             return false;
         }
@@ -62,14 +75,14 @@ class Database
 
         foreach ($this->$tableName as $item){
             if($item->name == $name){
-                return $item;
+                return ($item);
             }
         }
 
         return false;
     }
 
-    function updateTable($tableName, $row){
+    function updateTable($tableName, BaseRow $row){
         if(!isValidTableName($tableName)||is_null($this->$tableName)){
             return false;
         }
@@ -81,10 +94,10 @@ class Database
         }
 
         return false;
-
     }
 
-    function deleteTable($tableName, $id){
+    function deleteTable($tableName, $id): bool
+    {
         if(!isValidTableName($tableName)||is_null($this->$tableName)){
             return false;
         }
@@ -99,7 +112,8 @@ class Database
         return false;
     }
 
-    function truncateTable($tableName){
+    function truncateTable($tableName): bool
+    {
         if(!isValidTableName($tableName)||is_null($this->$tableName)){
             return false;
         }
@@ -110,12 +124,3 @@ class Database
     }
 
 }
-
-/*$haha = new Database();
-$haha->insertTable('productTable', new Product(1, 'computer', 1));
-$haha->insertTable('productTable', new Product(3, 'computer4', 3));
-$haha->insertTable('productTable', new Product(4, 'computer', 15));
-var_dump($haha->updateTable('productTable', new Product(4, 'computer4', 15)));
-var_dump($haha->selectTable('productTable', 'computer4'));
-
-var_dump($haha);*/

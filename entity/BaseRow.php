@@ -1,8 +1,8 @@
 <?php
 
-include 'BaseRow2.php';
+include 'InterfaceEntity.php';
 
-abstract class BaseRow implements BaseRow2
+abstract class BaseRow implements InterfaceEntity
 {
     public function __set($property, $value){
         $this->$property = $value;

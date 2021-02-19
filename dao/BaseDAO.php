@@ -1,7 +1,8 @@
 <?php
 
+include 'InterfaceDAO.php';
 
-abstract class BaseDAO
+abstract class BaseDAO implements InterfaceDAO
 {
     protected $database;
     protected $tableName;

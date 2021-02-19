@@ -97,7 +97,7 @@ class DatabaseDemo
     }
 }
 
-$databaseDemo = new DatabaseDemo(new Database());
+$databaseDemo = new DatabaseDemo(Database::createDatabase());
 //$databaseDemo->insertTableTest();
 $databaseDemo->initDatabase();
 $databaseDemo->updateTableTest(CATEGORY_TABLE, new Category(1, 'category update'));
