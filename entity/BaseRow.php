@@ -14,4 +14,14 @@ abstract class BaseRow implements InterfaceEntity
         return $this->name;
     }
 
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
 }

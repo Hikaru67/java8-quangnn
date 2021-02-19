@@ -18,4 +18,8 @@ class Product extends BaseRow
         return $this->categoryId;
     }
 
+    public function setCategoryId($categoryId){
+        $this->categoryId = $categoryId;
+    }
+
 }
