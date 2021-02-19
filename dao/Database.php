@@ -18,13 +18,22 @@ class Database
     }
 
     function insertTable($tableName, $row){
-        if(in_array(get_class($row), ENTITY_TYPE))
-            return $this->$tableName[] = $row;
-        else
+        if(!isValidTableName($tableName)||!isValidEntityType($row)){
             return false;
+        }
+        /*if(!in_array(get_class($row), ENTITY_TYPE)||!in_array($tableName, TABLE_NAMES)){
+            return false;
+        }*/
+
+        return $this->$tableName[] = $row;
+
     }
 
     function selectTable($tableName, $elementName){
+        if(!isValidTableName($tableName)||is_null($this->$tableName)){
+            return false;
+        }
+
         $table = array();
 
         foreach ($this->$tableName as $item){
@@ -37,6 +46,9 @@ class Database
     }
 
     function findById($tableName, $id){
+        if(!isValidTableName($tableName)||is_null($this->$tableName)){
+            return false;
+        }
 
         foreach ($this->$tableName as $item){
             if($item->id == $id){
@@ -48,6 +60,9 @@ class Database
     }
 
     function findByName($tableName, $name){
+        if(!isValidTableName($tableName)||is_null($this->$tableName)){
+            return false;
+        }
 
         foreach ($this->$tableName as $item){
             if($item->name == $name){
@@ -59,6 +74,9 @@ class Database
     }
 
     function updateTable($tableName, $row){
+        if(!isValidTableName($tableName)||is_null($this->$tableName)){
+            return false;
+        }
 
         foreach ($this->$tableName as $key => $item){
             if($item->id == $row->id){
@@ -66,27 +84,34 @@ class Database
             }
         }
 
-        return 0;
+        return false;
+
     }
 
     function deleteTable($tableName, $id){
+        if(!isValidTableName($tableName)||is_null($this->$tableName)){
+            return false;
+        }
 
         foreach ($this->$tableName as $key => $item){
             if($item->id == $id){
                 unset($this->$tableName[$key]);
-                return 1;
+                return true;
             }
         }
 
-        return 0;
+        return false;
     }
 
     function truncateTable($tableName){
+        if(!isValidTableName($tableName)||is_null($this->$tableName)){
+            return false;
+        }
 
         unset($this->$tableName);
 
+        return true;
     }
-
 
 }
 

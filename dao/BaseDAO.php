@@ -17,21 +17,19 @@ abstract class BaseDAO
     }
 
     public function insert($row){
+
         if(!in_array(get_class($row), ENTITY_TYPE)){
             return false;
         }
-        else{
             return $this->database->insertTable($this->tableName, $row);
-        }
 
     }
 
     public function update($row){
-        if(!in_array(get_class($row), ENTITY_TYPE))
+        if(!in_array(get_class($row), ENTITY_TYPE)){
             return false;
-        else{
-            return  $this->database->updateTable($this->tableName, $row);
         }
+            return  $this->database->updateTable($this->tableName, $row);
 
     }
 
@@ -41,7 +39,11 @@ abstract class BaseDAO
 
     public function findAll(){
         $tableName = $this->tableName;
-        return $this->database->$tableName;
+
+        if($this->database->$tableName){
+            return $this->database->$tableName;
+        }
+            return false;
     }
 
     public function findById($id){
