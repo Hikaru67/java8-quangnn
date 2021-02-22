@@ -4,6 +4,9 @@ include 'InterfaceEntity.php';
 
 abstract class BaseRow implements InterfaceEntity
 {
+    protected $id;
+    protected $name;
+
     public function getId()
     {
         return $this->id;

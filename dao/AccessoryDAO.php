@@ -11,19 +11,4 @@ class AccessoryDAO extends BaseDAO
         $this->tableName = ACCESSORY_TABLE;
     }
 
-    public function getDatabase(): Database
-    {
-        return $this->database;
-    }
-
-    public function getTableName(): string
-    {
-        return $this->tableName;
-    }
-
-    public function __get($name)
-    {
-        return $this->$name;
-    }
-
 }

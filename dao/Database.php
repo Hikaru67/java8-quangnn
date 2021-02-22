@@ -22,14 +22,44 @@ class Database
         return self::$database;
     }
 
-    public function __set($property, $value){
-        $this->$property = $value;
+    public function setProductTable($productTable){
+        $this->productTable = $productTable;
+    }
+    public function setCategoryTable($categoryTable){
+        $this->categoryTable = $categoryTable;
+    }
+    public function setAccessoryTable($accessoryTable){
+        $this->accessoryTable = $accessoryTable;
     }
 
-    public function __get($property)
-    {
-        return $this->$property;
+    public function getProductTable(){
+        return $this->productTable;
     }
+    public function getCategoryTable(){
+        return $this->categoryTable;
+    }
+    public function getAccessoryTable(){
+        return $this->accessoryTable;
+    }
+
+    public function getTable($tableName){
+        switch ($tableName) {
+            case PRODUCT_TABLE:
+                return $this->getProductTable();
+                break;
+            case CATEGORY_TABLE:
+                return $this->getCategoryTable();
+                break;
+            case ACCESSORY_TABLE:
+                return $this->getAccessoryTable();
+                break;
+        }
+        return false;
+    }
+
+    /*public function getTable($tableName){
+        return $this->$tableName;
+    }*/
 
     public function insertTable($tableName, BaseRow $row){
         if(!isValidTableName($tableName)){

@@ -67,29 +67,29 @@ class DatabaseDemo
         $categoryTable = CATEGORY_TABLE;
         $accessoryTable = ACCESSORY_TABLE;
 
-        if ($this->databaseTest->$productTable){
+        if ($this->databaseTest->getTable($productTable)){
             echo "\nTABLE PRODUCT \n";
             echo "|Id\t|PRODUCT NAME\t|Category Id\t|\n";
 
-                foreach ($this->databaseTest->$productTable as $product){
+                foreach ($this->databaseTest->getTable($productTable) as $product){
                 echo "|".$product->getId()."\t|".$product->getName()."\t|".$product->getCategoryId()."\t\t|\n";
             }
         }
 
-        if ($this->databaseTest->$categoryTable){
+        if ($this->databaseTest->getTable($categoryTable)){
             echo "\nTABLE CATEGORY \n";
             echo "|Id\t|CATEGORY NAME\t|\n";
 
-            foreach ($this->databaseTest->$categoryTable as $category){
+            foreach ($this->databaseTest->getTable($categoryTable) as $category){
                 echo "|".$category->getId()."\t|".$category->getName()."\t|\n";
             }
         }
 
-        if ($this->databaseTest->$accessoryTable){
+        if ($this->databaseTest->getTable($accessoryTable)){
             echo "\nTABLE ACCESSORY \n";
             echo "|Id\t|ACCESSORY NAME\t|\n";
 
-            foreach ($this->databaseTest->$accessoryTable as $accessory){
+            foreach ($this->databaseTest->getTable($accessoryTable) as $accessory){
                 echo "|".$accessory->getId()."\t|".$accessory->getName()."|\n";
             }
         }

@@ -12,6 +12,26 @@ abstract class BaseDAO implements InterfaceDAO
         $this->database = $database;
     }
 
+    public function getDatabase(): Database
+    {
+        return $this->database;
+    }
+
+    public function getTableName(): string
+    {
+        return $this->tableName;
+    }
+
+    public function setDatabase($database)
+    {
+        $this->database = $database;
+    }
+
+    public function setTableName($tableName)
+    {
+        $this->tableName = $tableName;
+    }
+
     public function insert(BaseRow $row){
         return $this->database->insertTable($this->tableName, $row);
     }
@@ -28,8 +48,8 @@ abstract class BaseDAO implements InterfaceDAO
     public function findAll(){
         $tableName = $this->tableName;
 
-        if($this->database->$tableName){
-            return $this->database->$tableName;
+        if($this->database->getTable($tableName)){
+            return $this->database->getTable($tableName);
         }
             return false;
     }

@@ -4,8 +4,6 @@ include 'BaseRow.php';
 
 class Product extends BaseRow
 {
-    protected $id;
-    protected $name;
     protected $categoryId;
 
     public function __construct($id, $name, $categoryId){
